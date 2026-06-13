@@ -8,9 +8,7 @@
 
 The living docs today live at:
 
-```
-C:\Users\mrkan\Loop Engineering
-```
+https://github.com/KanakMalpani/Loop-Engineering
 
 This folder plans either:
 

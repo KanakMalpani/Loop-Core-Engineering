@@ -27,5 +27,5 @@
 ## Links
 
 - Parent workspace: [../README.md](../README.md)
-- Discipline repo (mirror): `C:\Users\mrkan\Loop Engineering`
+- Discipline repo (mirror): https://github.com/KanakMalpani/Loop-Engineering
 - Agent brief: [../AGENT-BRIEF.md](../AGENT-BRIEF.md)
