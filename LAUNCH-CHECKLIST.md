@@ -25,7 +25,7 @@ Complete these once per machine/account. Automations in CI depend on GitHub secr
 ## 4. GitHub discoverability
 
 - [x] Repository topics on all stack repos
-- [ ] **Pin repos on your profile** (manual — no public API): GitHub profile → Customize pins → add Loop Core Engineering, loopnet, LoopGym, LoopBench
+- [x] **Pin repos on your profile** (manual — no public API): GitHub profile → Customize pins → add Loop Core Engineering, loopnet, LoopGym, LoopBench
 
 ## 5. Demo assets
 
