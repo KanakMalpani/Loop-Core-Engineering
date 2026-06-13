@@ -1,33 +1,61 @@
 # Loop Engineering Ecosystem
 
-Published v0.1 stack — install, pin, and cross-link from here.
+**One discipline. Four repos. Zero schema drift.**
 
-| Repo | GitHub | Role | Install |
-|------|--------|------|---------|
-| **Loop Core Engineering** | [Loop-Core-Engineering](https://github.com/KanakMalpani/Loop-Core-Engineering) | LSS / LES specs, validators | `pip install git+https://github.com/KanakMalpani/Loop-Core-Engineering.git` |
-| **LoopNet** | [loopnet](https://github.com/KanakMalpani/loopnet) | Dataset `ln/record-v1` | Clone + JSONL, or HF (see below) |
-| **LoopGym** | [LoopGym](https://github.com/KanakMalpani/LoopGym) | Runtime (Sim / Live / Replay) | `pip install git+https://github.com/KanakMalpani/LoopGym.git` |
-| **LoopBench** | [LoopBench](https://github.com/KanakMalpani/LoopBench) | Benchmarks + leaderboard | `pip install git+https://github.com/KanakMalpani/LoopBench.git` + LoopGym |
+This is the official install map for the published v0.1 stack. Start here if you are building, benchmarking, or researching self-improving AI systems.
+
+---
+
+## The four layers
+
+| # | Repository | Analogy | One line |
+|---|------------|---------|----------|
+| 1 | [**Loop Core Engineering**](https://github.com/KanakMalpani/Loop-Core-Engineering) | The HTTP spec | LSS, LES, validators, IDs |
+| 2 | [**LoopNet**](https://github.com/KanakMalpani/loopnet) | ImageNet | 500 loop trajectories + failures |
+| 3 | [**LoopGym**](https://github.com/KanakMalpani/LoopGym) | OpenAI Gym | Run loops (sim / live / replay) |
+| 4 | [**LoopBench**](https://github.com/KanakMalpani/LoopBench) | MLPerf | Score loops on public tasks |
+
+**Narrative home** (manifesto, patterns, case studies): [Loop Engineering](https://github.com/KanakMalpani/Loop-Engineering)
+
+---
 
 ## Version pins (v0.1)
 
-- `lss@1.0.0` — [specs/lss-1.0.schema.json](specs/lss-1.0.schema.json)
-- `les@1.0.0` — [specs/les-1.0.md](specs/les-1.0.md)
-- `loopgym@0.1.0` · `loopbench@0.1.0` · `loopnet@0.1.0`
+| Pin | Location |
+|-----|----------|
+| `lss@1.0.0` | [`specs/lss-1.0.schema.json`](specs/lss-1.0.schema.json) |
+| `les@1.0.0` | [`specs/les-1.0.md`](specs/les-1.0.md) |
+| `loopnet@0.1.0` | [loopnet](https://github.com/KanakMalpani/loopnet) |
+| `loopgym@0.1.0` | [LoopGym](https://github.com/KanakMalpani/LoopGym) |
+| `loopbench@0.1.0` | [LoopBench](https://github.com/KanakMalpani/LoopBench) |
 
-## Quick full stack (local dev)
+---
+
+## 5-minute full stack
 
 ```bash
+# Specs & validators
 git clone https://github.com/KanakMalpani/Loop-Core-Engineering.git
-git clone https://github.com/KanakMalpani/loopnet.git
-git clone https://github.com/KanakMalpani/LoopGym.git
-git clone https://github.com/KanakMalpani/LoopBench.git
 
-pip install -e LoopGym -e LoopBench
-loopbench run --task LB-CR-1 --spec LoopBench/submissions/examples/spec-fast-loop.yaml --seeds 0,1 -o results.json
+# Runtime + benchmarks (pip install from GitHub)
+pip install git+https://github.com/KanakMalpani/LoopGym.git
+pip install git+https://github.com/KanakMalpani/LoopBench.git
+
+# First benchmark run
+loopbench run \
+  --task LB-CR-1 \
+  --spec LoopBench/submissions/examples/spec-fast-loop.yaml \
+  --seeds 0,1 \
+  -o results.json
+
+loopbench validate results.json
 ```
 
-## LoopNet without clone
+Clone [loopnet](https://github.com/KanakMalpani/loopnet) when you need ReplayEnv or dataset R&D.
+
+---
+
+## Data without cloning LoopNet
 
 ```python
 from datasets import load_dataset
@@ -39,14 +67,31 @@ ds = load_dataset(
 )
 ```
 
-After Hugging Face upload: `load_dataset("KanakMalpani/loopnet-seed-v0.1", split="train")`.
+Hugging Face (after upload): `KanakMalpani/loopnet-seed-v0.1`
 
-## CI dependency order
+---
+
+## Dependency graph
 
 ```
-Loop Core Engineering → LoopNet (optional) → LoopGym → LoopBench
+Loop Core Engineering
+        │
+        ├──► LoopNet (dataset)
+        │
+        └──► LoopGym (runtime) ──► LoopBench (measurement)
 ```
 
-## Narrative docs
+CI in downstream repos checks out **Loop Core Engineering** from GitHub — never a forked schema.
 
-Manifesto, fundamentals, patterns, and case studies live in the **[Loop Engineering](https://github.com/KanakMalpani/Loop-Engineering)** discipline repo. **Schema authority stays in Loop Core Engineering.**
+---
+
+## Where to go next
+
+| I want to… | Go to |
+|------------|-------|
+| Write a valid loop spec | [LSS 1.0 overview](specs/lss-1.0.md) |
+| Understand scoring | [LES 1.0](specs/les-1.0.md) |
+| Run a loop locally | [LoopGym README](https://github.com/KanakMalpani/LoopGym) |
+| Get a public score | [LoopBench README](https://github.com/KanakMalpani/LoopBench) |
+| Train on loop trajectories | [LoopNet DATACARD](https://github.com/KanakMalpani/loopnet/blob/main/DATACARD.md) |
+| Read the philosophy | [Loop Engineering manifesto](https://github.com/KanakMalpani/Loop-Engineering) |
