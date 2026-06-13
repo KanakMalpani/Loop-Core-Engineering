@@ -33,6 +33,8 @@ python tools/validate_all_examples.py
 python tools/les_calculator.py --spec examples/minimal-loop.yaml --display
 ```
 
+**Full ecosystem map:** [ECOSYSTEM.md](ECOSYSTEM.md)
+
 On Windows, use `py -3.12` if the default Python lacks pip (requires Python 3.12+).
 
 ---
