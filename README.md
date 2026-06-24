@@ -56,7 +56,7 @@ Think of it as **HTTP for loops** — a thin, versioned layer that everything el
 ```mermaid
 flowchart TB
   CORE["<b>Loop Core Engineering</b><br/>LSS · LES · taxonomy · validators"]
-  NET["LoopNet<br/>500 trajectories + failures"]
+  NET["LoopNet v0.2<br/>545 trajectories + failures"]
   GYM["LoopGym<br/>Sim · Live · Replay"]
   BENCH["LoopBench<br/>3 tasks · leaderboard"]
 
@@ -70,7 +70,7 @@ flowchart TB
 | Repo | Role | Install |
 |------|------|---------|
 | **Loop Core Engineering** | Specs & governance | Clone + `pip install -r requirements.txt` |
-| [LoopNet](https://github.com/KanakMalpani/loopnet) | Dataset | [Hugging Face](https://huggingface.co/datasets/KanakMalpani/loopnet-seed-v0.1) or JSONL |
+| [LoopNet](https://github.com/KanakMalpani/loopnet) | Dataset | [Hugging Face v0.2](https://huggingface.co/datasets/KanakMalpani/loopnet-v0.2) (recommended) or JSONL |
 | [LoopGym](https://github.com/KanakMalpani/LoopGym) | Runtime | `pip install loopgym` |
 | [LoopBench](https://github.com/KanakMalpani/LoopBench) | Benchmarks | `pip install loopbench` |
 
