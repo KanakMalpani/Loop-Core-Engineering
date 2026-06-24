@@ -143,6 +143,12 @@ Spec changes flow through **[RFCs](templates/rfc-template.md)** → review → s
 
 ---
 
+## Adoption
+
+Reproduce the stack in 60 minutes: [REPRODUCE.md](https://github.com/KanakMalpani/Loop-Engineering/blob/main/contributions/REPRODUCE.md) · [Discussion #10](https://github.com/KanakMalpani/Loop-Engineering/discussions/10)
+
+---
+
 ## Citation
 
 ```bibtex
