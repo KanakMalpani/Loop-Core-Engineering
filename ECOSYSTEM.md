@@ -25,11 +25,16 @@ This is the official install map for the published stack. Start here if you are 
 
 | Pin | Location |
 |-----|----------|
-| `lss@1.0.0` | [`specs/lss-1.0.schema.json`](specs/lss-1.0.schema.json) |
+| `lss@1.0` + `lss@1.1` composition | [`specs/lss-1.0.md`](specs/lss-1.0.md) · [`specs/lss-1.1.md`](specs/lss-1.1.md) |
 | `les@1.0.0` | [`specs/les-1.0.md`](specs/les-1.0.md) |
 | `loopnet@0.2.0` | [HF loopnet-v0.2](https://huggingface.co/datasets/KanakMalpani/loopnet-v0.2) · [loopnet repo](https://github.com/KanakMalpani/loopnet) |
-| `loopgym@0.1.x` | [LoopGym](https://github.com/KanakMalpani/LoopGym) · `pip install loopgym` |
-| `loopbench@0.1.x` | [LoopBench](https://github.com/KanakMalpani/LoopBench) · `pip install loopbench` |
+| `le-loop-stack@0.4.0` | [Loop-Engineering/stack](https://github.com/KanakMalpani/Loop-Engineering) · `pip install "le-loop-stack>=0.4.0"` |
+| `le-loopforge@0.5.0` / `le-loopctl@0.5.0` | combine, mix, LoopChain, minjson export |
+| `loopgym@0.1.3` | [LoopGym](https://github.com/KanakMalpani/LoopGym) · 7 SimEnvs |
+| `loopbench@0.2.0` | [LoopBench](https://github.com/KanakMalpani/LoopBench) · 19 tasks, 4 suites |
+| `loopmath@0.1.0` (optional) | proof-carrying compose via `le-loop-stack[math]` |
+
+**Canonical registry:** [Loop-Engineering/ECOSYSTEM_VERSIONS.md](https://github.com/KanakMalpani/Loop-Engineering/blob/main/ECOSYSTEM_VERSIONS.md)
 
 **Deprecated for new work:** `loopnet-seed-v0.1` (500 seed-only records). Use **v0.2** (545 records).
 
@@ -41,8 +46,11 @@ This is the official install map for the published stack. Start here if you are 
 # Specs & validators
 git clone https://github.com/KanakMalpani/Loop-Core-Engineering.git
 
-# Runtime + benchmarks
-pip install loopgym loopbench
+# Discipline stack (combine + score)
+pip install "le-loop-stack>=0.4.0" loopgym loopbench
+
+# Token-efficient merged loop (flat YAML)
+loop combine --library research-agent,coding-agent -o merged.yaml --json
 
 # First benchmark run
 loopbench run \
