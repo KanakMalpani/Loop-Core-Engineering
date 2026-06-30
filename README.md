@@ -41,7 +41,7 @@ This repo is the **root of the dependency graph**. [LoopNet](https://github.com/
 Pin once — every runtime, dataset, and benchmark imports the same contracts.
 
 <div align="center">
-  <img src="assets/spec-layer.svg" alt="LSS, LES, taxonomy, and validators" width="92%" />
+  <img src="assets/spec-layer.png" alt="LSS, LES, taxonomy, and validators" width="92%" />
 </div>
 
 | Artifact | Pin | What you get |
