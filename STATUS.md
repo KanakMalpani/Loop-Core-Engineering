@@ -6,7 +6,7 @@
 | **Symbol** | ✅ |
 | **Started** | 2026-06-13 |
 | **Shipped** | 2026-06-13 |
-| **Owner** | — |
+| **Owner** | Kanak Malpani ([@KanakMalpani](https://github.com/KanakMalpani)) |
 | **Blockers** | — |
 | **Notes** | Published at https://github.com/KanakMalpani/Loop-Core-Engineering |
 

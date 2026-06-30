@@ -117,20 +117,26 @@ python tools/validate_lss.py examples/minimal-loop.yaml
 python tools/les_calculator.py --spec examples/minimal-loop.yaml --display
 ```
 
-**A minimal loop spec looks like this:**
+**A minimal loop spec looks like this** (abbreviated — see [`examples/minimal-loop.yaml`](examples/minimal-loop.yaml) for the full, CI-validated document):
 
 ```yaml
-loop_name: minimal-echo-loop
-version: "1.1"
-objective: "Demonstrate smallest valid LSS document"
+loop_name: echo-loop
+version: 1.0.0
+objective: "Summarize inputs.message to <=100 words at quality >= 0.80"
 workers:
-  - role: echo
-    model: mock
+  - id: summarizer
+    role: "Produce a concise summary preserving key facts"
+    model: { provider: openai, name: gpt-4.1-mini }
 evaluators:
-  - type: rubric
+  - id: quality_rubric
+    type: llm_rubric
+    rubric: { pass_threshold: 0.80 }
 termination_conditions:
-  - type: max_iterations
-    value: 3
+  success:
+    - { metric: primary_quality, operator: gte, value: 0.80 }
+  failure:
+    - { type: max_iterations, value: 8, action: halt }
+    - { type: safety_violation, action: halt }
 ```
 
 Three [CI-validated examples](examples/) ship with the repo — from smoke test to multi-agent debate.
@@ -141,11 +147,14 @@ Three [CI-validated examples](examples/) ship with the repo — from smoke test 
 
 | Artifact | Pin | Document |
 |----------|-----|----------|
-| LSS JSON Schema | `lss@1.1.0` | [`specs/lss-1.1.schema.json`](specs/lss-1.1.schema.json) |
+| LSS base schema | `lss@1.0.0` | [`specs/lss-1.0.schema.json`](specs/lss-1.0.schema.json) |
+| LSS 1.1 composition (optional block) | `lss@1.1.0` | [`specs/lss-1.1-composition.schema.json`](specs/lss-1.1-composition.schema.json) |
 | LSS overview | — | [`specs/lss-1.1.md`](specs/lss-1.1.md) |
 | LES formulas | `les@1.0.0` | [`specs/les-1.0.md`](specs/les-1.0.md) |
 | Pattern & env IDs | — | [`specs/loop-ids.md`](specs/loop-ids.md) |
-| Semver policy | — | [`CHANGELOG.md`](CHANGELOG.md) |
+| Semver & schema policy | — | [`CHANGELOG.md`](CHANGELOG.md) · [`specs/schema-versioning.md`](specs/schema-versioning.md) |
+
+> **LSS 1.1 = LSS 1.0 base schema + the optional `composition` block.** A 1.0 document stays valid under 1.1 with no migration.
 
 **LES scale:** store and exchange in **`[0, 1]`**. Multiply by 100 only for display.
 
@@ -156,7 +165,7 @@ Three [CI-validated examples](examples/) ship with the repo — from smoke test 
 | You are… | Start here |
 |----------|------------|
 | **Building an agent framework** | Pin LSS — let users export portable loop specs |
-| **Running benchmarks** | Validate submissions against [`lss-1.1.schema.json`](specs/lss-1.1.schema.json) |
+| **Running benchmarks** | Validate submissions against [`lss-1.0.schema.json`](specs/lss-1.0.schema.json) |
 | **Publishing research** | Cite `lss@1.1.0` + `les@1.0.0` for reproducibility |
 | **Designing org workflows** | Use failure taxonomy + LES dimensions as a shared scorecard |
 
@@ -187,6 +196,6 @@ Reproduce the stack in 60 minutes: [REPRODUCE.md](https://github.com/KanakMalpan
 
 <div align="center">
 
-<sub>MIT License · v0.1 · <a href="STATUS.md">Status</a></sub>
+<sub>MIT License · LSS 1.1.0 · LES 1.0.0 · <a href="STATUS.md">Status</a></sub>
 
 </div>
