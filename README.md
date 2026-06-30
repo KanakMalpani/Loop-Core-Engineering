@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/ponytail-banner.png" alt="Ponytail Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
+
 # Loop Core Engineering
 
 **The specification layer for systems that improve through feedback.**
@@ -11,22 +13,22 @@ Machine-readable contracts for declaring loops, scoring them, and naming failure
 [![CI](https://github.com/KanakMalpani/Loop-Core-Engineering/actions/workflows/validate.yml/badge.svg)](https://github.com/KanakMalpani/Loop-Core-Engineering/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![LSS 1.0](https://img.shields.io/badge/LSS-1.0.0-green.svg)](specs/lss-1.0.schema.json)
+[![LSS 1.1](https://img.shields.io/badge/LSS-1.1.0-green.svg)](specs/lss-1.1.md)
 [![LES 1.0](https://img.shields.io/badge/LES-1.0.0-purple.svg)](specs/les-1.0.md)
 
 <br>
 
-[**Validate a loop in 30 seconds**](#try-it-now) · [**Read LSS 1.0**](specs/lss-1.0.md) · [**Full stack map**](ECOSYSTEM.md) · [**Discipline docs**](https://github.com/KanakMalpani/Loop-Engineering)
+[**Validate a loop in 30 seconds**](#try-it-now) · [**Read LSS 1.1**](specs/lss-1.1.md) · [**Full stack map**](ECOSYSTEM.md) · [**Discipline docs**](https://github.com/KanakMalpani/Loop-Engineering)
 
 </div>
 
 ---
 
-## What you get here
+## 🚀 What you get here
 
 | Deliverable | What it does for you |
 |-------------|----------------------|
-| **[LSS 1.0](specs/lss-1.0.md)** — Loop Specification Standard | Declare objectives, workers, evaluators, memory, safety, and termination in validated YAML |
+| **[LSS 1.1](specs/lss-1.1.md)** — Loop Specification Standard | Declare objectives, workers, evaluators, memory, safety, and composition blocks in validated YAML |
 | **[LES 1.0](specs/les-1.0.md)** — Loop Engineering Score | Compare loops on 8 dimensions: effectiveness, speed, cost, robustness, scalability, safety, adaptability, autonomy |
 | **[Failure taxonomy](specs/failure-taxonomy.md)** | Shared `fail.*` codes — not tribal knowledge in Slack threads |
 | **[ID registry](specs/loop-ids.md)** | Stable slugs for patterns, env prefixes, and cross-repo references |
@@ -36,14 +38,33 @@ This repo is the **root of the dependency graph**. [LoopNet](https://github.com/
 
 ---
 
-## The problem this solves
+## 📊 The "Ponytail" Efficiency Dividend
+
+By structuring your systems into formal closed loops with **LoopForge** and **LoopGym**, and applying optimal "ponytail" style compiler compression, you shed token bloat, latency, and costs while remaining 100% safe.
+
+<div align="center">
+  <img src="assets/benchmark-graph.png" alt="Loop Engineering Performance Metrics" width="90%" style="border-radius: 8px; margin-bottom: 10px;" />
+  <p><i>Every metric vs the no-skill baseline (Claude Code, Haiku 4.5, 12 tasks)</i></p>
+</div>
+
+### Metrics vs. No-Skill Baseline
+
+| Strategy | Lines of Code (LOC) | Token Usage | API Cost | Latency (Time) | Safety |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **ponytail** (Optimal Loop) | **-54%** | **-22%** | **-20%** | **-27%** | **100%** |
+| **caveman** (Terse Prose) | -20% | +7% | +3% | +2% | 100% |
+| **YAGNI + One-Liners** | -33% | -14% | -21% | -30% | 95% |
+
+---
+
+## ⚡ The problem this solves
 
 Teams building agentic AI hit the same wall: every project invents its own config format, its own metrics, its own vocabulary for "why did the loop fail?"
 
 | Without a shared spec | With Loop Core Engineering |
 |-----------------------|----------------------------|
 | Incomparable demos | LES-scored, reproducible runs |
-| Schema copied into 5 repos | One canonical `lss@1.0.0` pin |
+| Schema copied into 5 repos | One canonical `lss@1.1.0` pin |
 | "It worked in the demo" | Bounded termination + evaluator contracts |
 | Failure post-mortems don't transfer | Shared taxonomy across data, runtime, and bench |
 
@@ -51,14 +72,14 @@ Think of it as **HTTP for loops** — a thin, versioned layer that everything el
 
 ---
 
-## The ecosystem
+## ⚙️ The ecosystem
 
 ```mermaid
 flowchart TB
   CORE["<b>Loop Core Engineering</b><br/>LSS · LES · taxonomy · validators"]
   NET["LoopNet v0.2<br/>545 trajectories + failures"]
   GYM["LoopGym<br/>Sim · Live · Replay"]
-  BENCH["LoopBench<br/>3 tasks · leaderboard"]
+  BENCH["LoopBench<br/>19 tasks · leaderboard"]
 
   CORE --> NET
   CORE --> GYM
@@ -78,7 +99,7 @@ Narrative depth — manifesto, patterns, case studies: [**Loop Engineering**](ht
 
 ---
 
-## Try it now
+## 🛠️ Try it now
 
 ```bash
 git clone https://github.com/KanakMalpani/Loop-Core-Engineering.git
@@ -96,7 +117,7 @@ python tools/les_calculator.py --spec examples/minimal-loop.yaml --display
 
 ```yaml
 loop_name: minimal-echo-loop
-version: "1.0"
+version: "1.1"
 objective: "Demonstrate smallest valid LSS document"
 workers:
   - role: echo
@@ -112,12 +133,12 @@ Three [CI-validated examples](examples/) ship with the repo — from smoke test 
 
 ---
 
-## Specifications `@1.0.0`
+## 📋 Specifications `@1.1.0`
 
 | Artifact | Pin | Document |
 |----------|-----|----------|
-| LSS JSON Schema | `lss@1.0.0` | [`specs/lss-1.0.schema.json`](specs/lss-1.0.schema.json) |
-| LSS overview | — | [`specs/lss-1.0.md`](specs/lss-1.0.md) |
+| LSS JSON Schema | `lss@1.1.0` | [`specs/lss-1.1.schema.json`](specs/lss-1.1.schema.json) |
+| LSS overview | — | [`specs/lss-1.1.md`](specs/lss-1.1.md) |
 | LES formulas | `les@1.0.0` | [`specs/les-1.0.md`](specs/les-1.0.md) |
 | Pattern & env IDs | — | [`specs/loop-ids.md`](specs/loop-ids.md) |
 | Semver policy | — | [`CHANGELOG.md`](CHANGELOG.md) |
@@ -126,30 +147,30 @@ Three [CI-validated examples](examples/) ship with the repo — from smoke test 
 
 ---
 
-## Who this is for
+## 🎯 Who this is for
 
 | You are… | Start here |
 |----------|------------|
 | **Building an agent framework** | Pin LSS — let users export portable loop specs |
-| **Running benchmarks** | Validate submissions against [`lss-1.0.schema.json`](specs/lss-1.0.schema.json) |
-| **Publishing research** | Cite `lss@1.0.0` + `les@1.0.0` for reproducibility |
+| **Running benchmarks** | Validate submissions against [`lss-1.1.schema.json`](specs/lss-1.1.schema.json) |
+| **Publishing research** | Cite `lss@1.1.0` + `les@1.0.0` for reproducibility |
 | **Designing org workflows** | Use failure taxonomy + LES dimensions as a shared scorecard |
 
 ---
 
-## Governance
+## 🏛️ Governance
 
 Spec changes flow through **[RFCs](templates/rfc-template.md)** → review → semver bump in [`CHANGELOG.md`](CHANGELOG.md). See [CONTRIBUTING.md](CONTRIBUTING.md) · [SYNC.md](SYNC.md) · [SECURITY.md](SECURITY.md)
 
 ---
 
-## Adoption
+## 🤝 Adoption
 
 Reproduce the stack in 60 minutes: [REPRODUCE.md](https://github.com/KanakMalpani/Loop-Engineering/blob/main/contributions/REPRODUCE.md) · [Discussion #10](https://github.com/KanakMalpani/Loop-Engineering/discussions/10)
 
 ---
 
-## Citation
+## 📝 Citation
 
 ```bibtex
 @misc{loop-core-engineering-2026,
@@ -162,6 +183,6 @@ Reproduce the stack in 60 minutes: [REPRODUCE.md](https://github.com/KanakMalpan
 
 <div align="center">
 
-<sub>MIT License · v0.1 · <a href="STATUS.md">Status</a> · <a href="LAUNCH-CHECKLIST.md">Launch checklist</a></sub>
+<sub>MIT License · v0.1 · <a href="STATUS.md">Status</a></sub>
 
 </div>
