@@ -38,11 +38,19 @@ This repo is the **root of the dependency graph**. [LoopNet](https://github.com/
 
 ## The specification layer
 
-Pin once — every runtime, dataset, and benchmark imports the same contracts.
+Pin once — every runtime, dataset, and benchmark imports the same contracts. **No more five copies of the same JSON Schema in five repos.**
 
 <div align="center">
   <img src="assets/spec-layer.png" alt="LSS, LES, taxonomy, and validators" width="92%" />
 </div>
+
+| Benefit | What changes |
+| :--- | :--- |
+| **Declare once, run everywhere** | Same LSS YAML in LoopGym, LoopBench, and your agent harness |
+| **Compare apples to apples** | LES scores loops on 8 dimensions — not vibes |
+| **Name failures precisely** | `fail.*` codes replace "it got weird in prod" |
+| **CI that actually gates** | Validators run in every repo — broken specs never merge |
+| **Semver you can trust** | Pin `lss@1.1.0` · upgrade when *you* choose |
 
 | Artifact | Pin | What you get |
 | :--- | :--- | :--- |
